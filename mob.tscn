@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpvjaqjckckql"]
+
+[ext_resource type="Texture2D" uid="uid://dpbkps5b1rfu8" path="res://dodge_assets/art/enemyFlyingAlt_1.png" id="1_2xslg"]
+[ext_resource type="Texture2D" uid="uid://clltjs5hq1tig" path="res://dodge_assets/art/enemyFlyingAlt_2.png" id="2_xne0y"]
+[ext_resource type="Texture2D" uid="uid://cfvai24rr33ql" path="res://dodge_assets/art/enemySwimming_1.png" id="3_271ny"]
+[ext_resource type="Texture2D" uid="uid://dc60s7tw6tc30" path="res://dodge_assets/art/enemySwimming_2.png" id="4_f3b6b"]
+[ext_resource type="Texture2D" uid="uid://i08csb0670c5" path="res://dodge_assets/art/enemyWalking_1.png" id="5_s0q8o"]
+[ext_resource type="Texture2D" uid="uid://cd1egjfyu6dwh" path="res://dodge_assets/art/enemyWalking_2.png" id="6_3skek"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_11lsw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2xslg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xne0y")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_271ny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f3b6b")
+}],
+"loop": true,
+"name": &"swim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_s0q8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3skek")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 3.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mn0cq"]
+radius = 29.0
+height = 170.0
+
+[node name="Mob" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_11lsw")
+animation = &"fly"
+frame = 1
+frame_progress = 0.812305
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_mn0cq")
+metadata/_edit_group_ = true
+
+[node name="VisibleNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+metadata/_edit_group_ = true
